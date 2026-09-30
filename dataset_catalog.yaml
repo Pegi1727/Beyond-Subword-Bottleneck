@@ -1,0 +1,62 @@
+project:
+  title: A Diagnostic Framework for Multilingual Tokenization Inefficiencies
+  target_journal: TACL (Transactions of the Association for Computational Linguistics)
+  track: Empirical and Data-Driven Methods
+  version: 1.0.0
+  license: CC-BY-4.0
+  authors:
+  - name: Pegah Merrikhi
+    email: pegah.merrikhiii@gmail.com
+    role: Independent Researcher
+    affiliation: Independent Researcher, Iran
+corpus:
+  total_sample_size: 300
+  sample_size_per_language: 75
+  languages:
+  - code: en
+    name: English
+    family: Indo-European (Germanic)
+    script: Latin
+    resource_level: High-Resource
+    code_numeric: 1
+  - code: ru
+    name: Russian
+    family: Indo-European (Slavic)
+    script: Cyrillic
+    resource_level: High-Resource
+    code_numeric: 2
+  - code: ig
+    name: Igbo
+    family: Niger-Congo (Volta-Niger)
+    script: Latin + Diacritics
+    resource_level: Low-Resource
+    code_numeric: 3
+  - code: am
+    name: Amharic
+    family: Afroasiatic (Semitic)
+    script: Ge'ez (Ethiopic)
+    resource_level: Extremely Low-Resource
+    code_numeric: 4
+  metrics:
+    TCR:
+      full_name: Tokenization Cost Ratio
+      formula: subword_tokens / character_count
+      description: Quantifies lexical inflation and subword fragmentation rate relative
+        to sequence length.
+    TCI:
+      full_name: Token Context Index (Token Collision Index)
+      formula: unique_semantic_subwords / total_allocated_tokens
+      description: Measures semantic alignment, vocabulary collision rate, and token
+        representational efficiency.
+    TMR:
+      full_name: Token-Morpheme Ratio
+      formula: subword_tokens / morphological_units
+      description: Evaluates subword boundary alignment with true morphological root
+        and affix boundaries.
+files:
+  primary_raw_dataset: final_analysis_dataset.csv
+  summary_table: language_summary_table.csv
+  spss_dataset: tokenization_analysis_final.sav
+  excel_dataset: Tokenization_Results_Final.xlsx
+  processed_data_directory: processed_data/
+  processed_archive: processed_data_20.zip

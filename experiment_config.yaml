@@ -1,0 +1,70 @@
+reproducibility_pipeline:
+  pipeline_version: 1.0.0
+  seed: 42
+  input_dataset: data/final_analysis_dataset.csv
+  confidence_level: 0.95
+  statistical_tests:
+    normality:
+      test: Shapiro-Wilk
+      threshold_alpha: 0.05
+      null_hypothesis: Data is normally distributed
+    homoscedasticity:
+      test: Levene
+      center: median
+      threshold_alpha: 0.05
+      null_hypothesis: Variances are homogeneous across groups
+    omnibus:
+      test: Kruskal-Wallis
+      effect_size: epsilon_squared
+      grouping_variable: Language
+      dependent_variables:
+      - TCR
+      - TCI
+      - TMR
+    post_hoc:
+      test: Dunn
+      p_adjust_methods:
+      - holm
+      - bonferroni
+      pairwise_comparisons:
+      - - English
+        - Russian
+      - - English
+        - Igbo
+      - - English
+        - Amharic
+      - - Russian
+        - Igbo
+      - - Russian
+        - Amharic
+      - - Igbo
+        - Amharic
+    effect_size:
+      test: Cliff's Delta
+      bootstrap_iterations: 1000
+      magnitude_thresholds:
+        negligible: 0.147
+        small: 0.33
+        medium: 0.474
+        large: 1.0
+  figures:
+    format: JPEG
+    dpi: 300
+    figure_1:
+      name: figure1_tcr.jpg
+      metric: TCR
+      type: Boxplot_Strip
+    figure_2:
+      name: figure2_tmr.jpg
+      metric: TMR
+      type: Bar_Distribution
+    figure_3:
+      name: figure3_tci.jpg
+      metric: TCI
+      type: Bar_ErrorBars
+    figure_4:
+      name: figure4_joint_profile.jpg
+      metrics:
+      - TCR
+      - TCI
+      type: Scatter_Diagnostic_Quadrants
