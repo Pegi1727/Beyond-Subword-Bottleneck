@@ -54,8 +54,21 @@ Aggregate metrics for the evaluated languages ($N=300$):
 | **Igbo** | 0.6464 | 1.0000 | 0.3192 |
 | **Amharic** | 2.6033 | 1.0000 | 0.1948 |
 
----
-
+-------------------------------------------------------------------------------------------------------------------------
+💡 Key Research Conclusions
+The Tokenization Tax: Non-Latin scripts (e.g., Amharic) incur a significantly higher TCR (2.60) compared to English (0.17), leading to sequence expansion and increased computational costs.
+Morphological Distortion: Fusional languages like Russian demonstrate elevated TMR values (1.62), indicating severe morphological fragmentation during tokenization.
+Semantic Dilution: The Token Collision Index (TCI) drops sharply for low-resource languages, compromising semantic representation stability across subword segments.
+📖 Citation
+If you utilize this diagnostic framework or the provided datasets in your research, please cite:
+---------------------------------------------------------------------------------------------------------------
+bibtex
+@article{merrikhi2026beyond,
+  title={Beyond the Subword Bottleneck: A Diagnostic Tri-Metric Evaluation},
+  author={Merrikhi, Pegah},
+  journal={Transactions of the Association for Computational Linguistics},
+  year={2026}
+--------------------------------------------------------------------------------------------------
 ## 🌲 Repository Structure
 ```text
 Beyond-Subword-Bottleneck/
